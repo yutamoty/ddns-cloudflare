@@ -2,6 +2,8 @@
 #
 # This script deliver dynamic DNS in Cloudflare.
 
+DATE=$(date "+%Y/%m/%d %H:%M:%S")
+
 # Please edit the following config file for your environment.
 CURRENT=$(cd $(dirname $0);pwd)
 CONFIG_FILE=${1:-${CURRENT}/.ddns-cloudflare.conf}
@@ -23,7 +25,7 @@ curl --request PATCH \
   "content": "'"${NEW_RR_VALUE}"'",
   "name": "'"${HOST_NAME}"'",
   "type": "A",
-  "comment": "Domain verification record"
+  "comment": "Domain Update record '"${DATE}"'"
 }'
 
 if [ $? -eq 0 ]; then
