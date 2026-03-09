@@ -57,6 +57,9 @@ chmod 600 ~/.ddns-cloudflare.conf
 2. Cloudflare API でドメインの Zone ID と DNS レコード ID を取得
 3. 取得した IP アドレスで A レコードを PATCH リクエストで更新
 
+本スクリプトは IP アドレスの変更有無にかかわらず、実行のたびに Cloudflare API を呼び出して DNS レコードを更新します。
+Cloudflare の API Rate Limit（1200 リクエスト / 5分）に対して十分な余裕があるため、cron で数分間隔で実行しても問題ありません。
+
 ## ライセンス
 
 MIT
